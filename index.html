@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TS WebAppServices | Reliable Web Development Partner</title>
+
+<style>
+:root{
+  --primary:#2563eb;
+  --dark:#0f172a;
+  --gray:#64748b;
+  --light:#f8fafc;
+  --card:#ffffff;
+  --shadow:0 14px 34px rgba(0,0,0,.14);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:var(--light);
+  color:var(--dark);
+  line-height:1.6;
+}
+
+/* ================= NAV ================= */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 24px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.logo{
+  font-weight:700;
+  font-size:1.25rem;
+  color:var(--primary);
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+}
+.nav-links a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--dark);
+  font-weight:500;
+}
+.nav-links a:hover{color:var(--primary)}
+.whatsapp{font-size:1.3rem}
+
+/* Burger */
+.burger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+.burger span{
+  width:25px;
+  height:3px;
+  background:var(--dark);
+  border-radius:4px;
+}
+
+/* ================= HERO ================= */
+.hero{
+  width:100%;
+  background:linear-gradient(120deg,#e0e7ff,#f8fafc);
+}
+.hero-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:90px 24px 80px;
+  text-align:center;
+}
+.hero h1{
+  font-size:2.4rem;
+  margin-bottom:14px;
+}
+.hero p{
+  max-width:760px;
+  margin:0 auto;
+  color:var(--gray);
+}
+
+.buttons{margin-top:30px}
+.btn{
+  padding:14px 22px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-outline{
+  border:2px solid var(--primary);
+  color:var(--primary);
+  margin-left:12px;
+}
+
+/* ================= SECTIONS ================= */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 24px;
+}
+.center{text-align:center}
+h2{font-size:2rem;margin-bottom:10px}
+.section-desc{
+  max-width:820px;
+  margin:0 auto;
+  color:var(--gray);
+}
+
+/* ================= SCROLL ================= */
+.scroll-wrap{
+  position:relative;
+  margin-top:40px;
+}
+
+.scroll{
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding:10px 52px;
+  -webkit-overflow-scrolling:touch;
+}
+.scroll::-webkit-scrollbar{display:none}
+
+.card{
+  min-width:342px;
+  background:var(--card);
+  padding:26px;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  word-wrap:break-word;
+  overflow-wrap:anywhere;
+}
+.card p{
+  color:var(--gray);
+  margin-top:8px;
+  font-size:14px;
+}
+
+/* ================= ARROWS ================= */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:none;
+  background:#fff;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  z-index:5;
+  font-size:20px;
+}
+.arrow.left{left:6px}
+.arrow.right{right:6px}
+.arrow.hidden{display:none}
+
+/* ================= COUNTRIES ================= */
+.countries{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+.country{
+  background:#eef2ff;
+  padding:10px 14px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+/* ================= BASE ================= */
+.base{
+  background:#eef2ff;
+  border-radius:24px;
+  text-align:center;
+}
+.base p{
+  max-width:700px;
+  margin:12px auto;
+  color:var(--gray);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:30px;
+  color:var(--gray);
+  font-size:14px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .burger{display:flex}
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    gap:18px;
+    padding:20px;
+    display:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+  }
+  .nav-links.active{display:flex}
+  .nav-links a{margin-left:0}
+
+  .hero h1{font-size:2rem}
+  h2{font-size:1.6rem}
+  section{padding:50px 16px}
+
+  .scroll{padding:10px 44px}
+  .card{min-width:88%}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="logo">TS WebAppServices</div>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#tech" onclick="closeMenu()">Technology</a>
+    <a href="#clients" onclick="closeMenu()">Clients</a>
+    <a href="#base" onclick="closeMenu()">Work Together</a>
+    <a href="https://wa.me/9790246289" target="_blank" class="whatsapp">💬</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Reliable Web Development & Ongoing Support for Growing Businesses</h1>
+    <p>
+      Founder-led development ensuring stable releases, faster issue resolution, and 
+      long-term reliability for production systems.
+    </p>
+    <div class="buttons">
+      <a href="mailto:tswebappservices@gmail.com" class="btn btn-primary">Contact Us</a>
+      <a href="#base" class="btn btn-outline">Request a Free Demo</a>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2 class="center">Our Services</h2>
+  <p class="section-desc center">
+    Carefully executed services designed to protect your production systems,
+    reduce risk, and improve performance without disruption.
+  </p>
+
+  <div class="scroll-wrap">
+    <button class="arrow left">‹</button>
+
+    <div class="scroll">
+      <div class="card">
+        <h3>Bug Fixing & Stability</h3>
+        <p>
+          We identify the root cause of critical and hidden issues,
+          apply production-safe fixes, and ensure system stability
+          with proper testing and rollback planning.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Feature Implementation</h3>
+        <p>
+          From small enhancements to complex modules, we implement
+          new features that align with your existing architecture,
+          business logic, and user workflows.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Product & Data Updates</h3>
+        <p>
+          Secure handling of product catalogs, pricing, content,
+          and database updates with validation to prevent data loss
+          or inconsistencies.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>WordPress & Plugins</h3>
+        <p>
+          Custom theme and plugin development, bug fixes, speed
+          optimization, and compatibility updates without breaking
+          your live website.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Dedicated Developer</h3>
+        <p>
+          A reliable developer who understands your system, works
+          as an extension of your team, and delivers consistent
+          improvements over the long term.
+        </p>
+      </div>
+    </div>
+
+    <button class="arrow right">›</button>
+  </div>
+</section>
+
+
+<!-- TECHNOLOGY -->
+<section id="tech">
+  <h2 class="center">Technology Expertise</h2>
+
+  <div class="scroll-wrap">
+    <button class="arrow left">‹</button>
+
+    <div class="scroll">
+      <div class="card">
+        PHP · Laravel · CodeIgniter · Core PHP  
+        <small>Stable, secure backend systems</small>
+      </div>
+
+      <div class="card">
+        JavaScript · React · Next.js  
+        <small>Modern, responsive user interfaces</small>
+      </div>
+
+      <div class="card">
+        WordPress · WooCommerce · Custom Plugins  
+        <small>Scalable content and eCommerce platforms</small>
+      </div>
+
+      <div class="card">
+        REST APIs · Third-Party Integrations · Webhooks  
+        <small>Seamless system communication</small>
+      </div>
+
+      <div class="card">
+        MySQL · PostgreSQL · MongoDB  
+        <small>Reliable relational and NoSQL databases</small>
+      </div>
+
+      <div class="card">
+        Payment Gateways — Stripe · PayPal · Razorpay  
+        <small>Secure online transactions</small>
+      </div>
+
+      <div class="card">
+        Authentication — JWT · OAuth · Role-Based Access  
+        <small>Secure user and admin systems</small>
+      </div>
+
+      <div class="card">
+        AWS · Linux · Deployment  
+        <small>Controlled releases and server stability</small>
+      </div>
+    </div>
+
+    <button class="arrow right">›</button>
+  </div>
+</section>
+
+
+<!-- CLIENTS -->
+<section id="clients">
+  <h2 class="center">International Client Experience</h2>
+  <div class="countries">
+    <div class="country">🇺🇸 USA</div>
+    <div class="country">🇳🇴 Norway</div>
+    <div class="country">🇦🇪 UAE</div>
+    <div class="country">🇩🇪 Germany</div>
+    <div class="country">🇮🇳 India</div>
+  </div>
+
+  <div class="scroll-wrap">
+    <button class="arrow left">‹</button>
+    <div class="scroll">
+      <div class="card">“Founder oversight ensured production stability.”</div>
+      <div class="card">“Handled live systems with minimal risk.”</div>
+      <div class="card">“Reliable long-term technical partner.”</div>
+      <div class="card">“Clear communication and full ownership.”</div>
+      <div class="card">“Integrated smoothly with our internal team.”</div>
+    </div>
+    <button class="arrow right">›</button>
+  </div>
+</section>
+
+<!-- BASE -->
+<section id="base" class="base">
+  <h2>Let’s Work Together</h2>
+  <p>
+    Structured planning, reliable execution, and founder-level accountability.
+  </p>
+  <a href="mailto:tswebappservices@gmail.com" class="btn btn-primary">Start a Conversation</a>
+</section>
+
+<footer>
+  © 2026 TS WebAppServices · tswebappservices@gmail.com
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('active');
+}
+function closeMenu(){
+  document.getElementById('navLinks').classList.remove('active');
+}
+
+/* ONE-CARD SCROLL (MOBILE FRIENDLY) */
+document.querySelectorAll('.scroll-wrap').forEach(wrap=>{
+  const scroll=wrap.querySelector('.scroll');
+  const left=wrap.querySelector('.left');
+  const right=wrap.querySelector('.right');
+
+  function cardWidth(){
+    const card=scroll.querySelector('.card');
+    return card ? card.offsetWidth + 24 : 300;
+  }
+
+  left.onclick=()=>scroll.scrollBy({left:-cardWidth(),behavior:'smooth'});
+  right.onclick=()=>scroll.scrollBy({left:cardWidth(),behavior:'smooth'});
+});
+</script>
+
+</body>
+</html>
